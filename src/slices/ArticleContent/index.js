@@ -17,7 +17,11 @@ const ArticleContent = ({ slice }) => {
       <PrismicNextImage field={slice.primary.article_image} className="article-image" />
       <div className="article-text">
         <span>{slice.primary.article_title}</span>
-        <PrismicRichText field={slice.primary.article_description} />
+        <PrismicRichText
+          field={slice.primary.article_description}
+          components={{
+            preformatted: ({ children }) => <code>{children}</code>
+        }}/>
         <span>{slice.primary.article_date}</span>
       </div>
     </section>
