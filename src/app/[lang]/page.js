@@ -24,7 +24,7 @@ export default async function Index({ params: { lang } }) {
 
   const locales = await getLocales(home, client);
 
-  return <SliceZone slices={home.data.slices} components={components} locales={locales} />;
+  return <SliceZone slices={home.data.slices} components={components} locales={locales} />
 }
 
 export async function generateStaticParams() {

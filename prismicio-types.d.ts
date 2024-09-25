@@ -158,7 +158,7 @@ interface NavigationDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type NavigationDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
+  prismic.PrismicDocumentWithUID<
     Simplify<NavigationDocumentData>,
     "navigation",
     Lang
