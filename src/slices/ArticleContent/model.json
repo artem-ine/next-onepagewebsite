@@ -1,0 +1,50 @@
+{
+  "id": "article_content",
+  "type": "SharedSlice",
+  "name": "ArticleContent",
+  "description": "ArticleContent",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "article_image": {
+          "type": "Image",
+          "config": {
+            "label": "article image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "article_title": {
+          "type": "Text",
+          "config": {
+            "label": "article title",
+            "placeholder": ""
+          }
+        },
+        "article_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "article description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "article_date": {
+          "type": "Date",
+          "config": {
+            "label": "article date",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"article_image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+					"width": 5616,
+					"height": 3744
+				},
+				"url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+				"width": 5616,
+				"height": 3744,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"article_title": {
+				"__TYPE__": "FieldContent",
+				"value": "certainly",
+				"type": "Text"
+			},
+			"article_description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Officia minim cupidatat exercitation dolor ad esse tempor esse do. Duis irure duis reprehenderit pariatur. Sunt officia esse nisi qui sit Lorem deserunt pariatur ipsum."
+						}
+					}
+				]
+			},
+			"article_date": {
+				"__TYPE__": "FieldContent",
+				"type": "Date",
+				"value": "2016-10-16"
+			}
+		},
+		"items": []
+	}
+]
