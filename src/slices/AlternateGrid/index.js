@@ -85,7 +85,7 @@ const AlternateGrid = ({ slice }) => {
                 margin: 0px;
                 min-width: 0px;
                 position: relative;
-                padding: 8vw 1.25rem;
+                padding: 2vw 1rem;
             }
 
             .es-alternate-grid {

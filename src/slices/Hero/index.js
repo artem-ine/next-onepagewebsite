@@ -112,7 +112,6 @@ const Hero = ({ slice }) => {
               display: flex;
               flex-direction: column;
               justify-content: space-around;
-              padding: 1.5rem;
             }
 
             @media (min-width: 1080px) {
