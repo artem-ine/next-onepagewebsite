@@ -128,9 +128,46 @@ interface HomeDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type HomeDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
+  prismic.PrismicDocumentWithUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-export type AllDocumentTypes = ArticleDocument | HomeDocument;
+type NavigationDocumentDataSlicesSlice = NavbarSlice;
+
+/**
+ * Content for navigation documents
+ */
+interface NavigationDocumentData {
+  /**
+   * Slice Zone field in *navigation*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<NavigationDocumentDataSlicesSlice>;
+}
+
+/**
+ * navigation document from Prismic
+ *
+ * - **API ID**: `navigation`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavigationDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<NavigationDocumentData>,
+    "navigation",
+    Lang
+  >;
+
+export type AllDocumentTypes =
+  | ArticleDocument
+  | HomeDocument
+  | NavigationDocument;
 
 /**
  * Item in *AlternateGrid → Default → Primary → items*
@@ -586,6 +623,68 @@ type HeroSliceVariation = HeroSliceDefault | HeroSliceImageRight;
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
+/**
+ * Primary content in *Navbar → Default → Primary*
+ */
+export interface NavbarSliceDefaultPrimary {
+  /**
+   * home field in *Navbar → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.default.primary.home
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  home: prismic.LinkField;
+
+  /**
+   * first article field in *Navbar → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.default.primary.first_article
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  first_article: prismic.LinkField;
+
+  /**
+   * second article field in *Navbar → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.default.primary.second_article
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  second_article: prismic.LinkField;
+}
+
+/**
+ * Default variation for Navbar Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavbarSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NavbarSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Navbar*
+ */
+type NavbarSliceVariation = NavbarSliceDefault;
+
+/**
+ * Navbar Shared Slice
+ *
+ * - **API ID**: `navbar`
+ * - **Description**: Navbar
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavbarSlice = prismic.SharedSlice<"navbar", NavbarSliceVariation>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -613,6 +712,9 @@ declare module "@prismicio/client" {
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
+      NavigationDocument,
+      NavigationDocumentData,
+      NavigationDocumentDataSlicesSlice,
       AllDocumentTypes,
       AlternateGridSlice,
       AlternateGridSliceDefaultPrimaryItemsItem,
@@ -632,6 +734,10 @@ declare module "@prismicio/client" {
       HeroSliceVariation,
       HeroSliceDefault,
       HeroSliceImageRight,
+      NavbarSlice,
+      NavbarSliceDefaultPrimary,
+      NavbarSliceVariation,
+      NavbarSliceDefault,
     };
   }
 }
