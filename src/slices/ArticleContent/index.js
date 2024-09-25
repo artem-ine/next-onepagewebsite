@@ -23,7 +23,7 @@ const ArticleContent = ({ slice }) => {
           components={{
             preformatted: ({ children }) => <code>{children}</code>
         }}/>
-        <span>{prismic.asDate(slice.primary.article_date).toLocaleString()}</span>
+        <span>{prismic.asDate(slice.primary.article_date).toLocaleDateString('fr-fr')}</span>
       </div>
     </section>
   );
