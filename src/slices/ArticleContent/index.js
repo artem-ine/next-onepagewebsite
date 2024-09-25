@@ -6,6 +6,7 @@
 
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
+import * as prismic from "@prismicio/client";
 
 const ArticleContent = ({ slice }) => {
   return (
@@ -22,7 +23,7 @@ const ArticleContent = ({ slice }) => {
           components={{
             preformatted: ({ children }) => <code>{children}</code>
         }}/>
-        <span>{slice.primary.article_date}</span>
+        <span>{prismic.asDate(slice.primary.article_date).toLocaleString()}</span>
       </div>
     </section>
   );
