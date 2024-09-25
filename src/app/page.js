@@ -1,6 +1,5 @@
 import { SliceZone } from "@prismicio/react";
 import * as prismic from "@prismicio/client";
-
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 
