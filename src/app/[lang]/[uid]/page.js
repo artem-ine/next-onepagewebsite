@@ -1,14 +1,14 @@
-import { notFound } from "next/navigation";
+import * as prismic from "@prismicio/client"
 import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 
+import { getLocales } from "@/lib/getLocales";
+
 export async function generateMetadata({ params: { uid, lang } }) {
   const client = createClient();
-  const page = await client
-    .getByUID("article", params.uid)
-    .catch(() => notFound());
+  const page = await client.getByUID("article", uid, { lang });
 
   return {
     title: page.data.meta_title,
@@ -16,20 +16,28 @@ export async function generateMetadata({ params: { uid, lang } }) {
   };
 }
 
-export default async function Page({ params, locale, previewData }) {
-  const client = createClient({ previewData });
-  const page = await client
-    .getByUID("article", params.uid, { lang: locale})
-    .catch(() => notFound());
+export default async function Page({ params: { uid, lang } }) {
+  const client = createClient();
 
-  return <SliceZone slices={page.data.slices} components={components} />;
+  const page = await client.getByUID("article", uid, { lang });
+  const locales = await getLocales(page, client);
+
+  return <SliceZone slices={page.data.slices} components={components} locales={locales} />;
 }
+
 
 export async function generateStaticParams() {
   const client = createClient();
-  const pages = await client.getAllByType("article");
+
+  const pages = await client.getAllByType("article", {
+    lang: "*",
+    filters: [prismic.filter.not("my.article.uid", "article")],
+  });
 
   return pages.map((page) => {
-    return { uid: page.uid };
+    return {
+      uid: page.uid,
+      lang: page.lang,
+    };
   });
 }
