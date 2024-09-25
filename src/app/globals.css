@@ -5,6 +5,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  display: flex;
+  justify-content: center;
 }
 
 @media (prefers-color-scheme: dark) {
