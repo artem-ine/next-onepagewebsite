@@ -28,7 +28,7 @@ export default async function Page({ params: { uid, lang } }) {
     <SliceZone slices={page.data.slices} components={components} locales={locales} />;
         {locales.map((locale) => (
         <li key={locale.id}>
-          <PrismicNextLink href={locale.url}>siojfoidsjf{locale.lang_name}</PrismicNextLink>
+          <PrismicNextLink href={locale.url}>{locale.lang_name}</PrismicNextLink>
         </li>
       ))}
     </div>
