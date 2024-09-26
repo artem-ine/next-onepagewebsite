@@ -8,8 +8,7 @@ import { SliceZone } from "@prismicio/react";
 import { getLocales } from "@/lib/getLocales";
 import * as prismic from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
-import "../../app/globals.css";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+import "./globals.css";
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -49,7 +48,6 @@ export default async function RootLayout({ children, params: { lang } }) {
 //   return (
 //     <div>
 //       <SliceZone slices={navigation.data.slices} components={components} />
-//       <LanguageSwitcher locales={locales} /> {/* Use the LanguageSwitcher */}
 //     </div>
 //   )
 // }

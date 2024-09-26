@@ -6,8 +6,8 @@ export default function Layout({ locales, navigation, children }) {
     <div className="text-slate-800">
       <Suspense>
         <Header locales={locales} navigation={navigation} />
-        <main>{children}</main>
       </Suspense>
+        <main>{children}</main>
     </div>
   );
 }
