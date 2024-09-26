@@ -47,6 +47,12 @@ body {
   padding: 10px;
 }
 
+.navigation{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
 .navbar{
   display: flex;
   gap: 10px;

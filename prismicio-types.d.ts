@@ -69,6 +69,71 @@ export type ArticleDocument<Lang extends string = string> =
     Lang
   >;
 
+type ArticleBankDocumentDataSlicesSlice = ArticleBankSlice;
+
+/**
+ * Content for Article Bank documents
+ */
+interface ArticleBankDocumentData {
+  /**
+   * Slice Zone field in *Article Bank*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article_bank.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ArticleBankDocumentDataSlicesSlice> /**
+   * Meta Title field in *Article Bank*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: article_bank.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Article Bank*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: article_bank.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Article Bank*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article_bank.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Article Bank document from Prismic
+ *
+ * - **API ID**: `article_bank`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ArticleBankDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ArticleBankDocumentData>,
+    "article_bank",
+    Lang
+  >;
+
 type HomeDocumentDataSlicesSlice = AlternateGridSlice | HeroSlice;
 
 /**
@@ -166,6 +231,7 @@ export type NavigationDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | ArticleDocument
+  | ArticleBankDocument
   | HomeDocument
   | NavigationDocument;
 
@@ -376,6 +442,78 @@ type AlternateGridSliceVariation =
 export type AlternateGridSlice = prismic.SharedSlice<
   "alternate_grid",
   AlternateGridSliceVariation
+>;
+
+/**
+ * Item in *ArticleBank → Default → Primary → Articles*
+ */
+export interface ArticleBankSliceDefaultPrimaryArticlesItem {
+  /**
+   * headline field in *ArticleBank → Default → Primary → Articles*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article_bank.default.primary.articles[].headline
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  headline: prismic.KeyTextField;
+
+  /**
+   * pitch field in *ArticleBank → Default → Primary → Articles*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article_bank.default.primary.articles[].pitch
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  pitch: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *ArticleBank → Default → Primary*
+ */
+export interface ArticleBankSliceDefaultPrimary {
+  /**
+   * Articles field in *ArticleBank → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article_bank.default.primary.articles[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  articles: prismic.GroupField<
+    Simplify<ArticleBankSliceDefaultPrimaryArticlesItem>
+  >;
+}
+
+/**
+ * Default variation for ArticleBank Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArticleBankSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ArticleBankSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ArticleBank*
+ */
+type ArticleBankSliceVariation = ArticleBankSliceDefault;
+
+/**
+ * ArticleBank Shared Slice
+ *
+ * - **API ID**: `article_bank`
+ * - **Description**: ArticleBank
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArticleBankSlice = prismic.SharedSlice<
+  "article_bank",
+  ArticleBankSliceVariation
 >;
 
 /**
@@ -709,6 +847,9 @@ declare module "@prismicio/client" {
       ArticleDocument,
       ArticleDocumentData,
       ArticleDocumentDataSlicesSlice,
+      ArticleBankDocument,
+      ArticleBankDocumentData,
+      ArticleBankDocumentDataSlicesSlice,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
@@ -724,6 +865,11 @@ declare module "@prismicio/client" {
       AlternateGridSliceVariation,
       AlternateGridSliceDefault,
       AlternateGridSliceImageRight,
+      ArticleBankSlice,
+      ArticleBankSliceDefaultPrimaryArticlesItem,
+      ArticleBankSliceDefaultPrimary,
+      ArticleBankSliceVariation,
+      ArticleBankSliceDefault,
       ArticleContentSlice,
       ArticleContentSliceDefaultPrimary,
       ArticleContentSliceVariation,

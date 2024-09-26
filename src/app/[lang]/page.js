@@ -5,6 +5,9 @@ import { getLocales } from "@/lib/getLocales";
 import { createClient } from "@/prismicio";
 
 import { components } from "@/slices";
+import { PrismicNextLink } from "@prismicio/next";
+import Layout from "@/components/Layout";
+import { Suspense } from "react";
 
 export async function generateMetadata({ params: { lang }}) {
   const client = createClient();
@@ -18,12 +21,17 @@ export async function generateMetadata({ params: { lang }}) {
 
 export default async function Index({ params: { lang } }) {
   const client = createClient();
-
   const home = await client.getSingle("home", { lang });
-
+  const navigation = await client.getSingle("navigation", { lang })
   const locales = await getLocales(home, client);
 
-  return <SliceZone slices={home.data.slices} components={components} locales={locales} />
+  return (
+    <div>
+        <Layout locales={locales} navigation={navigation}>
+          <SliceZone slices={home.data.slices} components={components} locales={locales} />;
+        </Layout>
+    </div>
+  )
 }
 
 export async function generateStaticParams() {

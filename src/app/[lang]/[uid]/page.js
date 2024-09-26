@@ -7,6 +7,8 @@ import { components } from "@/slices";
 import { getLocales } from "@/lib/getLocales";
 import { PrismicNextLink } from "@prismicio/next";
 
+import Layout from "@/components/Layout";
+
 export async function generateMetadata({ params: { uid, lang } }) {
   const client = createClient();
   const page = await client.getByUID("article", uid, { lang });
@@ -19,18 +21,15 @@ export async function generateMetadata({ params: { uid, lang } }) {
 
 export default async function Page({ params: { uid, lang } }) {
   const client = createClient();
-
   const page = await client.getByUID("article", uid, { lang });
+  const navigation = await client.getSingle("navigation", { lang })
   const locales = await getLocales(page, client);
 
   return (
     <div>
-    <SliceZone slices={page.data.slices} components={components} locales={locales} />;
-        {locales.map((locale) => (
-        <li key={locale.id}>
-          <PrismicNextLink href={locale.url}>{locale.lang_name}</PrismicNextLink>
-        </li>
-      ))}
+        <Layout locales={locales} navigation={navigation}>
+          <SliceZone slices={page.data.slices} components={components} locales={locales} />;
+        </Layout>
     </div>
   )
 }

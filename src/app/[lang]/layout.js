@@ -9,6 +9,7 @@ import { getLocales } from "@/lib/getLocales";
 import * as prismic from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import "../../app/globals.css";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -28,15 +29,10 @@ const localeLabels = {
 };
 
 export default async function RootLayout({ children, params: { lang } }) {
-
-  console.log("lang:", lang)
-
+  
   return (
     <html lang="en">
-      <body
-      // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Navbar />
+      <body>
         {children}
         <PrismicPreview repositoryName={repositoryName} />
       </body>
@@ -44,42 +40,31 @@ export default async function RootLayout({ children, params: { lang } }) {
   );
 }
 
-export async function Navbar() {
+// export async function Navbar() {
+  
+//   const client = createClient();
+//   const navigation = await client.getSingle("navigation");
+//   const locales = await getLocales(navigation, client);
+  
+//   return (
+//     <div>
+//       <SliceZone slices={navigation.data.slices} components={components} />
+//       <LanguageSwitcher locales={locales} /> {/* Use the LanguageSwitcher */}
+//     </div>
+//   )
+// }
 
-  const client = createClient();
-  const navigation = await client.getSingle("navigation");
-  const locales = await getLocales(navigation, client);
-
-  return (
-    <div>
-      <SliceZone slices={navigation.data.slices} components={components} />
-      {/* {locales.map((locale) => (
-        <li key={locale.lang} className="first:font-semibold">
-          <PrismicNextLink
-            locales={locales}
-            href={locale.url}
-            locale={locale.lang}
-            // aria-label={`Change language to ${navigation.data.lang.lang}`}
-            >
-            {localeLabels[locale.lang] || locale.lang}
-            </PrismicNextLink>
-            </li>
-          ))} */}
-    </div>
-  )
-}
-
-export async function generateStaticParams() {
-  const client = createClient();
-
-  const pages = await client.getAllByType("page", {
-    lang: "*",
-    filters: [prismic.filter.at("my.navigation.uid", "navigation")],
-  });
-
-  return pages.map((page) => {
-    return {
-      lang: page.lang,
-    };
-  });
-}
+// export async function generateStaticParams() {
+//   const client = createClient();
+  
+//   const pages = await client.getAllByType("page", {
+//     lang: "*",
+//     filters: [prismic.filter.at("my.navigation.uid", "navigation")],
+//   });
+  
+//   return pages.map((page) => {
+//     return {
+//       lang: page.lang,
+//     };
+//   });
+// }
