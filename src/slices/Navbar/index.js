@@ -21,3 +21,17 @@ const Navbar = ({ slice }) => {
 };
 
 export default Navbar;
+
+
+              {/* {locales.map((locale) => (
+        <li key={locale.lang} className="first:font-semibold">
+          <PrismicNextLink
+            locales={locales}
+            href={locale.url}
+            locale={locale.lang}
+            // aria-label={`Change language to ${navigation.data.lang.lang}`}
+            >
+            {localeLabels[locale.lang] || locale.lang}
+            </PrismicNextLink>
+            </li>
+          ))} */}

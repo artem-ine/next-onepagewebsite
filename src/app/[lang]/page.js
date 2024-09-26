@@ -5,7 +5,6 @@ import { getLocales } from "@/lib/getLocales";
 import { createClient } from "@/prismicio";
 
 import { components } from "@/slices";
-import { RootLayout } from "../layout"
 
 export async function generateMetadata({ params: { lang }}) {
   const client = createClient();
