@@ -33,17 +33,13 @@ const localeLabels = {
 
 export default async function RootLayout({ children, params }) {
 
-  const client = createClient();
-  const home = await client.getSingle("home", { lang: params.lang });
-  const locales = await getLocales(home, client);
-
   return (
     <html lang="en">
       <body
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar locales={locales} />
-              {locales.map((locale) => (
+        <Navbar />
+              {/* {locales.map((locale) => (
         <li key={locale.lang} className="first:font-semibold">
           <PrismicNextLink
             locales={locales}
@@ -54,7 +50,7 @@ export default async function RootLayout({ children, params }) {
             {localeLabels[locale.lang] || locale.lang}
             </PrismicNextLink>
             </li>
-          ))}
+          ))} */}
 
         {children}
         <PrismicPreview repositoryName={repositoryName} />
