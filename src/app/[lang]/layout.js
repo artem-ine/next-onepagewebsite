@@ -8,7 +8,7 @@ import { SliceZone } from "@prismicio/react";
 import { getLocales } from "@/lib/getLocales";
 import * as prismic from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
-import "./globals.css";
+import "../globals.css";
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -28,10 +28,11 @@ const localeLabels = {
 };
 
 export default async function RootLayout({ children, params: { lang } }) {
-  
+
   return (
     <html lang="en">
       <body>
+        <Navbar lang={lang} />
         {children}
         <PrismicPreview repositoryName={repositoryName} />
       </body>
@@ -39,30 +40,34 @@ export default async function RootLayout({ children, params: { lang } }) {
   );
 }
 
-// export async function Navbar() {
-  
-//   const client = createClient();
-//   const navigation = await client.getSingle("navigation");
-//   const locales = await getLocales(navigation, client);
-  
-//   return (
-//     <div>
-//       <SliceZone slices={navigation.data.slices} components={components} />
-//     </div>
-//   )
-// }
 
-// export async function generateStaticParams() {
-//   const client = createClient();
+// attempt to call the navbar here, but if put in root the scope of it will be outside of the rest of the children, and therefore the navbar links won't be change/no locale gets passed to it
+
+// latest: 
+
+export async function Navbar({lang}) {
+
+  const client = createClient();
+  const navigation = await client.getSingle("navigation", { lang });
+
+  return (
+    <div>
+      <SliceZone slices={navigation.data.slices} components={components} />
+    </div>
+  )
+}
+
+export async function generateStaticParams() {
+  const client = createClient();
   
-//   const pages = await client.getAllByType("page", {
-//     lang: "*",
-//     filters: [prismic.filter.at("my.navigation.uid", "navigation")],
-//   });
+  const pages = await client.getAllByType("page", {
+    lang: "*",
+    filters: [prismic.filter.at("my.navigation.uid", "navigation")],
+  });
   
-//   return pages.map((page) => {
-//     return {
-//       lang: page.lang,
-//     };
-//   });
-// }
+  return pages.map((page) => {
+    return {
+      lang: page.lang,
+    };
+  });
+}

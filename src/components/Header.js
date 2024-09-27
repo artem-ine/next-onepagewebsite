@@ -10,13 +10,13 @@ const localeLabels = {
   "fr-fr": "FR",
 };
 
+// navigation path doesn't seem to work to display navbar info + suspense didn't work either when navbar was called there
+
 export default async function Header({navigation, locales}) {
 
   return (
     <div>
-      {/* <Suspense>
-        <Navbar />
-      </Suspense>  */}
+      {/* <Navbar /> */}
       <nav className="flex flex-wrap items-center gap-x-6 gap-y-3 md:gap-x-10">
           <ul className="flex flex-wrap gap-6 md:gap-10">
             {/* {navigation.data?.links.map((item) => (
@@ -56,18 +56,17 @@ export default async function Header({navigation, locales}) {
 
 
 // export async function Navbar() {
-
+  
 //   const client = createClient();
 //   const navigation = await client.getSingle("navigation");
 //   const locales = await getLocales(navigation, client);
-
+  
 //   return (
 //     <div>
-//       <SliceZone slices={navigation.data.slices} components={components} />
+//       <SliceZone slices={navigation.data.slices} components={components} locales={locales} />
 //     </div>
 //   )
 // }
-
 
 // export async function generateStaticParams() {
 //   const client = createClient();

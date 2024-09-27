@@ -11,7 +11,7 @@ import Layout from "@/components/Layout";
 
 export async function generateMetadata({ params: { uid, lang } }) {
   const client = createClient();
-  const page = await client.getByUID("article", uid, { lang });
+  const page = await client.getByUID("article", uid, {lang});
 
   return {
     title: page.data.meta_title,
