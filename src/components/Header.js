@@ -11,11 +11,10 @@ const localeLabels = {
 };
 
 
-export default async function Header({navigation, locales}) {
+export default async function Header({locales}) {
 
   return (
     <div>
-      {/* <Navbar /> */}
       <nav className="flex flex-wrap items-center gap-x-6 gap-y-3 md:gap-x-10">
           <ul className="flex flex-wrap gap-6 md:gap-10">
         </ul>
@@ -41,6 +40,5 @@ export default async function Header({navigation, locales}) {
 }
 
 
-// tried calling navbar here + tried calling it inside header, either way document was not returned (even with suspense)
 
 

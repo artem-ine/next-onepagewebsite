@@ -9,5 +9,3 @@ export default function Layout({ locales, navigation, children, lang }) {
     </div>
   );
 }
-
-// suspense was meant to give header time to fetch navbar, but it doesn't seem to be doing much
