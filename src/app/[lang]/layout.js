@@ -40,11 +40,6 @@ export default async function RootLayout({ children, params: { lang } }) {
   );
 }
 
-
-// attempt to call the navbar here, but if put in root the scope of it will be outside of the rest of the children, and therefore the navbar links won't be change/no locale gets passed to it
-
-// latest: 
-
 export async function Navbar({lang}) {
 
   const client = createClient();

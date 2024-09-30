@@ -9,3 +9,5 @@ export const components = {
   hero: dynamic(() => import("./Hero")),
   navbar: dynamic(() => import("./Navbar")),
 };
+
+
