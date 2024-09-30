@@ -19,15 +19,15 @@ export const repositoryName =
 export const routes = [
   {
     type: "home",
-  	path: "/:lang?",
+  	path: "/:lang",
   },
   {
   	type: "article",
-  	path: "/:lang?/:uid",
+  	path: "/:lang/:uid",
   },
   {
   	type: "article_bank",
-  	path: "/:lang?/article_bank",
+  	path: "/:lang/article_bank",
   },
 
 ];

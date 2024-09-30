@@ -23,7 +23,6 @@ export default async function Page({ params: { uid, lang } }) {
   const client = createClient();
   const page = await client.getByUID("article", uid, { lang });
   const navigation = await client.getSingle("navigation", { lang });
-  console.log(navigation.data);
   const locales = await getLocales(page, client);
 
   return (
