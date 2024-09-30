@@ -1,23 +1,17 @@
 {
   "format": "page",
-  "id": "article_bank",
-  "label": "Article Bank",
-  "repeatable": true,
+  "id": "gallery",
+  "label": "gallery",
+  "repeatable": false,
   "status": true,
   "json": {
     "Main": {
-      "uid": {
-        "type": "UID",
-        "config": {
-          "label": "UID"
-        }
-      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "article_bank": {
+            "customer_logos": {
               "type": "SharedSlice"
             }
           }

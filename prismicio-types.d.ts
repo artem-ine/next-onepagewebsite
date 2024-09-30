@@ -69,49 +69,49 @@ export type ArticleDocument<Lang extends string = string> =
     Lang
   >;
 
-type ArticleBankDocumentDataSlicesSlice = ArticleBankSlice;
+type GalleryDocumentDataSlicesSlice = CustomerLogosSlice;
 
 /**
- * Content for Article Bank documents
+ * Content for gallery documents
  */
-interface ArticleBankDocumentData {
+interface GalleryDocumentData {
   /**
-   * Slice Zone field in *Article Bank*
+   * Slice Zone field in *gallery*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
-   * - **API ID Path**: article_bank.slices[]
+   * - **API ID Path**: gallery.slices[]
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<ArticleBankDocumentDataSlicesSlice> /**
-   * Meta Title field in *Article Bank*
+  slices: prismic.SliceZone<GalleryDocumentDataSlicesSlice> /**
+   * Meta Title field in *gallery*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: article_bank.meta_title
+   * - **API ID Path**: gallery.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */;
   meta_title: prismic.KeyTextField;
 
   /**
-   * Meta Description field in *Article Bank*
+   * Meta Description field in *gallery*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: article_bank.meta_description
+   * - **API ID Path**: gallery.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *Article Bank*
+   * Meta Image field in *gallery*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: article_bank.meta_image
+   * - **API ID Path**: gallery.meta_image
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
@@ -119,18 +119,18 @@ interface ArticleBankDocumentData {
 }
 
 /**
- * Article Bank document from Prismic
+ * gallery document from Prismic
  *
- * - **API ID**: `article_bank`
- * - **Repeatable**: `true`
+ * - **API ID**: `gallery`
+ * - **Repeatable**: `false`
  * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type ArticleBankDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<
-    Simplify<ArticleBankDocumentData>,
-    "article_bank",
+export type GalleryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<GalleryDocumentData>,
+    "gallery",
     Lang
   >;
 
@@ -231,7 +231,7 @@ export type NavigationDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | ArticleDocument
-  | ArticleBankDocument
+  | GalleryDocument
   | HomeDocument
   | NavigationDocument;
 
@@ -445,78 +445,6 @@ export type AlternateGridSlice = prismic.SharedSlice<
 >;
 
 /**
- * Item in *ArticleBank → Default → Primary → Articles*
- */
-export interface ArticleBankSliceDefaultPrimaryArticlesItem {
-  /**
-   * headline field in *ArticleBank → Default → Primary → Articles*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: article_bank.default.primary.articles[].headline
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  headline: prismic.KeyTextField;
-
-  /**
-   * pitch field in *ArticleBank → Default → Primary → Articles*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: article_bank.default.primary.articles[].pitch
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  pitch: prismic.RichTextField;
-}
-
-/**
- * Primary content in *ArticleBank → Default → Primary*
- */
-export interface ArticleBankSliceDefaultPrimary {
-  /**
-   * Articles field in *ArticleBank → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: article_bank.default.primary.articles[]
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  articles: prismic.GroupField<
-    Simplify<ArticleBankSliceDefaultPrimaryArticlesItem>
-  >;
-}
-
-/**
- * Default variation for ArticleBank Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type ArticleBankSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<ArticleBankSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *ArticleBank*
- */
-type ArticleBankSliceVariation = ArticleBankSliceDefault;
-
-/**
- * ArticleBank Shared Slice
- *
- * - **API ID**: `article_bank`
- * - **Description**: ArticleBank
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type ArticleBankSlice = prismic.SharedSlice<
-  "article_bank",
-  ArticleBankSliceVariation
->;
-
-/**
  * Primary content in *ArticleContent → Default → Primary*
  */
 export interface ArticleContentSliceDefaultPrimary {
@@ -589,6 +517,108 @@ type ArticleContentSliceVariation = ArticleContentSliceDefault;
 export type ArticleContentSlice = prismic.SharedSlice<
   "article_content",
   ArticleContentSliceVariation
+>;
+
+/**
+ * Item in *CustomerLogos → Default → Primary → logos*
+ */
+export interface CustomerLogosSliceDefaultPrimaryLogosItem {
+  /**
+   * image field in *CustomerLogos → Default → Primary → logos*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: customer_logos.default.primary.logos[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * link field in *CustomerLogos → Default → Primary → logos*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: customer_logos.default.primary.logos[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *CustomerLogos → Default → Primary*
+ */
+export interface CustomerLogosSliceDefaultPrimary {
+  /**
+   * eyebrowHeadline field in *CustomerLogos → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: customer_logos.default.primary.eyebrowHeadline
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  eyebrowHeadline: prismic.RichTextField;
+
+  /**
+   * callToActionLabel field in *CustomerLogos → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: customer_logos.default.primary.callToActionLabel
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  callToActionLabel: prismic.KeyTextField;
+
+  /**
+   * callToActionLink field in *CustomerLogos → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: customer_logos.default.primary.callToActionLink
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  callToActionLink: prismic.LinkField;
+
+  /**
+   * logos field in *CustomerLogos → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: customer_logos.default.primary.logos[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  logos: prismic.GroupField<
+    Simplify<CustomerLogosSliceDefaultPrimaryLogosItem>
+  >;
+}
+
+/**
+ * Default variation for CustomerLogos Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CustomerLogosSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CustomerLogosSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CustomerLogos*
+ */
+type CustomerLogosSliceVariation = CustomerLogosSliceDefault;
+
+/**
+ * CustomerLogos Shared Slice
+ *
+ * - **API ID**: `customer_logos`
+ * - **Description**: CustomerLogos
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CustomerLogosSlice = prismic.SharedSlice<
+  "customer_logos",
+  CustomerLogosSliceVariation
 >;
 
 /**
@@ -794,6 +824,16 @@ export interface NavbarSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   second_article: prismic.LinkField;
+
+  /**
+   * gallery field in *Navbar → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.default.primary.gallery
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  gallery: prismic.LinkField;
 }
 
 /**
@@ -847,9 +887,9 @@ declare module "@prismicio/client" {
       ArticleDocument,
       ArticleDocumentData,
       ArticleDocumentDataSlicesSlice,
-      ArticleBankDocument,
-      ArticleBankDocumentData,
-      ArticleBankDocumentDataSlicesSlice,
+      GalleryDocument,
+      GalleryDocumentData,
+      GalleryDocumentDataSlicesSlice,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
@@ -865,15 +905,15 @@ declare module "@prismicio/client" {
       AlternateGridSliceVariation,
       AlternateGridSliceDefault,
       AlternateGridSliceImageRight,
-      ArticleBankSlice,
-      ArticleBankSliceDefaultPrimaryArticlesItem,
-      ArticleBankSliceDefaultPrimary,
-      ArticleBankSliceVariation,
-      ArticleBankSliceDefault,
       ArticleContentSlice,
       ArticleContentSliceDefaultPrimary,
       ArticleContentSliceVariation,
       ArticleContentSliceDefault,
+      CustomerLogosSlice,
+      CustomerLogosSliceDefaultPrimaryLogosItem,
+      CustomerLogosSliceDefaultPrimary,
+      CustomerLogosSliceVariation,
+      CustomerLogosSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceImageRightPrimary,

@@ -25,11 +25,10 @@ export const routes = [
   	type: "article",
   	path: "/:lang/:uid",
   },
-  {
-  	type: "article_bank",
-  	path: "/:lang/article_bank",
+    {
+  	type: "gallery",
+  	path: "/:lang/gallery",
   },
-
 ];
 
 /**
