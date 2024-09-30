@@ -1,6 +1,7 @@
 import { isFilled } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink, PrismicNextImage } from "@prismicio/next";
+import "../../app/globals.css";
 
 /**
  * @typedef {import("@prismicio/client").Content.CustomerLogosSlice} CustomerLogosSlice
@@ -14,7 +15,7 @@ const CustomerLogos = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="es-bounded es-customer-logos"
+      className="es-bounded es-customer-logos gallery"
     >
       <div className="es-bounded__content es-customer-logos__content">
         {isFilled.richText(slice.primary.eyebrowHeadline) && (

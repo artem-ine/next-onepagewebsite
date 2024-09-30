@@ -47,6 +47,11 @@ body {
   padding: 10px;
 }
 
+.gallery{
+  display: flex;
+  
+}
+
 .navigation{
   display: flex;
   flex-direction: row;
