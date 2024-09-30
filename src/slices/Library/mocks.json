@@ -1,0 +1,41 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"library": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"headline",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "nose",
+									"type": "Text"
+								}
+							],
+							[
+								"pitch",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Velit amet ipsum anim aute consectetur ea. Cillum ad tempor esse commodo culpa reprehenderit consectetur est non commodo voluptate incididunt. Velit do ullamco anim mollit sit esse sint laboris adipisicing ipsum reprehenderit est occaecat."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

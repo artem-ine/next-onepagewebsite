@@ -7,6 +7,6 @@ export const components = {
   article_content: dynamic(() => import("./ArticleContent")),
   customer_logos: dynamic(() => import("./CustomerLogos")),
   hero: dynamic(() => import("./Hero")),
+  library: dynamic(() => import("./Library")),
   navbar: dynamic(() => import("./Navbar")),
-  test: dynamic(() => import("./Test")),
 };

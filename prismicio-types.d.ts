@@ -134,7 +134,10 @@ export type GalleryDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomeDocumentDataSlicesSlice = AlternateGridSlice | HeroSlice;
+type HomeDocumentDataSlicesSlice =
+  | LibrarySlice
+  | AlternateGridSlice
+  | HeroSlice;
 
 /**
  * Content for home documents
@@ -792,6 +795,76 @@ type HeroSliceVariation = HeroSliceDefault | HeroSliceImageRight;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Item in *Library → Default → Primary → library*
+ */
+export interface LibrarySliceDefaultPrimaryLibraryItem {
+  /**
+   * headline field in *Library → Default → Primary → library*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: library.default.primary.library[].headline
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  headline: prismic.KeyTextField;
+
+  /**
+   * pitch field in *Library → Default → Primary → library*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: library.default.primary.library[].pitch
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  pitch: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Library → Default → Primary*
+ */
+export interface LibrarySliceDefaultPrimary {
+  /**
+   * library field in *Library → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: library.default.primary.library[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  library: prismic.GroupField<Simplify<LibrarySliceDefaultPrimaryLibraryItem>>;
+}
+
+/**
+ * Default variation for Library Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LibrarySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<LibrarySliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Library*
+ */
+type LibrarySliceVariation = LibrarySliceDefault;
+
+/**
+ * Library Shared Slice
+ *
+ * - **API ID**: `library`
+ * - **Description**: Library
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LibrarySlice = prismic.SharedSlice<
+  "library",
+  LibrarySliceVariation
+>;
+
+/**
  * Primary content in *Navbar → Default → Primary*
  */
 export interface NavbarSliceDefaultPrimary {
@@ -863,33 +936,6 @@ type NavbarSliceVariation = NavbarSliceDefault;
  */
 export type NavbarSlice = prismic.SharedSlice<"navbar", NavbarSliceVariation>;
 
-/**
- * Default variation for Test Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type TestSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Record<string, never>,
-  never
->;
-
-/**
- * Slice variation for *Test*
- */
-type TestSliceVariation = TestSliceDefault;
-
-/**
- * Test Shared Slice
- *
- * - **API ID**: `test`
- * - **Description**: Test
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type TestSlice = prismic.SharedSlice<"test", TestSliceVariation>;
-
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -947,13 +993,15 @@ declare module "@prismicio/client" {
       HeroSliceVariation,
       HeroSliceDefault,
       HeroSliceImageRight,
+      LibrarySlice,
+      LibrarySliceDefaultPrimaryLibraryItem,
+      LibrarySliceDefaultPrimary,
+      LibrarySliceVariation,
+      LibrarySliceDefault,
       NavbarSlice,
       NavbarSliceDefaultPrimary,
       NavbarSliceVariation,
       NavbarSliceDefault,
-      TestSlice,
-      TestSliceVariation,
-      TestSliceDefault,
     };
   }
 }

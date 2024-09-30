@@ -49,7 +49,12 @@ body {
 
 .gallery{
   display: flex;
-  
+}
+
+.library{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .navigation{

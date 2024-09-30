@@ -5,9 +5,7 @@ import { getLocales } from "@/lib/getLocales";
 import { createClient } from "@/prismicio";
 
 import { components } from "@/slices";
-import { PrismicNextLink } from "@prismicio/next";
 import Layout from "@/components/Layout";
-import { Suspense } from "react";
 
 export async function generateMetadata({ params: { lang }}) {
   const client = createClient();
