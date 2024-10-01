@@ -46,9 +46,7 @@ export async function Navbar({lang}) {
   const navigation = await client.getSingle("navigation", { lang });
 
   return (
-    <div>
       <SliceZone slices={navigation.data.slices} components={components} />
-    </div>
   )
 }
 

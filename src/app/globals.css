@@ -57,6 +57,10 @@ body {
   align-items: center;
 }
 
+.h2{
+  font-weight: bold;
+}
+
 .navigation{
   display: flex;
   flex-direction: row;

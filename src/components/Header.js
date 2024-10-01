@@ -15,7 +15,7 @@ export default async function Header({locales}) {
 
   return (
     <div>
-      <nav className="flex flex-wrap items-center gap-x-6 gap-y-3 md:gap-x-10">
+      <nav className="flex flex-wrap items-center gap-x-6 gap-y-3 md:gap-x-10 justify-center">
           <ul className="flex flex-wrap gap-6 md:gap-10">
         </ul>
           <div className="flex flex-wrap gap-3">

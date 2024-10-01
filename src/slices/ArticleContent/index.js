@@ -15,9 +15,9 @@ const ArticleContent = ({ slice }) => {
       data-slice-variation={slice.variation}
       className="article"
     >
-      <PrismicNextImage field={slice.primary.article_image} className="article-image" />
-      <div className="article-text">
-        <span>{slice.primary.article_title}</span>
+      <PrismicNextImage field={slice.primary.article_image} className="" />
+      <div className="">
+        <span className="article-headline">{slice.primary.article_title}</span>
         <PrismicRichText
           field={slice.primary.article_description}
           components={{
