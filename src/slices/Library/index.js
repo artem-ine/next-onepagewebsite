@@ -16,7 +16,7 @@ const Library = ({ slice }) => {
     >
     {slice.primary.library.map((item, index) => (
       <div key={index}>
-        <h2>{item.headline}</h2>
+         <h2 className="headline">{item.headline}</h2>
         <PrismicRichText field={item.pitch} />
       </div>
     ))}
