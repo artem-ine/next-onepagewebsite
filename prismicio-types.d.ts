@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type ArticleDocumentDataSlicesSlice = ArticleContentSlice;
+type ArticleDocumentDataSlicesSlice = TableSlice | ArticleContentSlice;
 
 /**
  * Content for article documents
@@ -936,6 +936,93 @@ type NavbarSliceVariation = NavbarSliceDefault;
  */
 export type NavbarSlice = prismic.SharedSlice<"navbar", NavbarSliceVariation>;
 
+/**
+ * Item in *Table → Default → Primary → items*
+ */
+export interface TableSliceDefaultPrimaryItemsItem {
+  /**
+   * col1 field in *Table → Default → Primary → items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: table.default.primary.items[].col1
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  col1: prismic.RichTextField;
+
+  /**
+   * col2 field in *Table → Default → Primary → items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: table.default.primary.items[].col2
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  col2: prismic.RichTextField;
+
+  /**
+   * col3 field in *Table → Default → Primary → items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: table.default.primary.items[].col3
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  col3: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Table → Default → Primary*
+ */
+export interface TableSliceDefaultPrimary {
+  /**
+   * title field in *Table → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: table.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * items field in *Table → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: table.default.primary.items[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  items: prismic.GroupField<Simplify<TableSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for Table Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TableSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TableSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Table*
+ */
+type TableSliceVariation = TableSliceDefault;
+
+/**
+ * Table Shared Slice
+ *
+ * - **API ID**: `table`
+ * - **Description**: Table
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TableSlice = prismic.SharedSlice<"table", TableSliceVariation>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1002,6 +1089,11 @@ declare module "@prismicio/client" {
       NavbarSliceDefaultPrimary,
       NavbarSliceVariation,
       NavbarSliceDefault,
+      TableSlice,
+      TableSliceDefaultPrimaryItemsItem,
+      TableSliceDefaultPrimary,
+      TableSliceVariation,
+      TableSliceDefault,
     };
   }
 }

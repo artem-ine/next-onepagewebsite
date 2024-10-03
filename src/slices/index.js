@@ -9,4 +9,5 @@ export const components = {
   hero: dynamic(() => import("./Hero")),
   library: dynamic(() => import("./Library")),
   navbar: dynamic(() => import("./Navbar")),
+  table: dynamic(() => import("./Table")),
 };

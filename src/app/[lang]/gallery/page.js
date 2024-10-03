@@ -18,7 +18,7 @@ export async function generateMetadata() {
 
 export default async function Page({ params: { lang } }) {
   const client = createClient();
-  const page = await client.getSingle("gallery", {lang});
+  const page = await client.getSingle("gallery", { lang });
   const navigation = await client.getSingle("navigation", { lang })
   const locales = await getLocales(page, client);
 
