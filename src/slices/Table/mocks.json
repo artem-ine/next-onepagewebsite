@@ -68,5 +68,108 @@
 			}
 		},
 		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "5Columns",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Consectetur nulla ex culpa do dolore irure fugiat in in sit fugiat tempor. Sit sint ea officia nostrud. Consectetur tempor anim consectetur aute ex duis."
+						}
+					}
+				]
+			},
+			"items": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"col1",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Minim ullamco Lorem sunt ullamco ullamco esse commodo voluptate veniam ea deserunt labore veniam exercitation. Est aliqua aliquip reprehenderit commodo nostrud elit."
+											}
+										}
+									]
+								}
+							],
+							[
+								"col2",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "In esse ut officia mollit nisi officia et incididunt proident anim. Eiusmod ea aliqua aute anim id proident."
+											}
+										}
+									]
+								}
+							],
+							[
+								"col3",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Ex ea exercitation pariatur elit. Laborum cupidatat deserunt anim et duis veniam adipisicing. Dolore sunt voluptate voluptate ut sit aute."
+											}
+										}
+									]
+								}
+							],
+							[
+								"col4",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Eiusmod ad irure sit minim deserunt consectetur do consequat aliqua enim aute ex in commodo non."
+											}
+										}
+									]
+								}
+							],
+							[
+								"col5",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Ex nisi ipsum officia consectetur mollit sint mollit culpa cillum dolore tempor nulla est consectetur."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
 	}
 ]

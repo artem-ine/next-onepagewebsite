@@ -59,6 +59,80 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "5Columns",
+      "name": "5 columns",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,paragraph"
+          }
+        },
+        "items": {
+          "type": "Group",
+          "config": {
+            "label": "items",
+            "repeat": true,
+            "fields": {
+              "col1": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "col1",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              },
+              "col2": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "col2",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              },
+              "col3": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "col3",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              },
+              "col4": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "col4",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              },
+              "col5": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "col5",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

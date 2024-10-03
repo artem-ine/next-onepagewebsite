@@ -135,6 +135,7 @@ export type GalleryDocument<Lang extends string = string> =
   >;
 
 type HomeDocumentDataSlicesSlice =
+  | FeaturedArticlesSlice
   | LibrarySlice
   | AlternateGridSlice
   | HeroSlice;
@@ -625,6 +626,78 @@ export type CustomerLogosSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *FeaturedArticles → Default → Primary → Featured articles*
+ */
+export interface FeaturedArticlesSliceDefaultPrimaryFeaturedArticlesItem {
+  /**
+   * article1 field in *FeaturedArticles → Default → Primary → Featured articles*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_articles.default.primary.featured_articles[].article1
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  article1: prismic.ContentRelationshipField<"article">;
+
+  /**
+   * article2 field in *FeaturedArticles → Default → Primary → Featured articles*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_articles.default.primary.featured_articles[].article2
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  article2: prismic.ContentRelationshipField<"article">;
+}
+
+/**
+ * Primary content in *FeaturedArticles → Default → Primary*
+ */
+export interface FeaturedArticlesSliceDefaultPrimary {
+  /**
+   * Featured articles field in *FeaturedArticles → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_articles.default.primary.featured_articles[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  featured_articles: prismic.GroupField<
+    Simplify<FeaturedArticlesSliceDefaultPrimaryFeaturedArticlesItem>
+  >;
+}
+
+/**
+ * Default variation for FeaturedArticles Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedArticlesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FeaturedArticlesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *FeaturedArticles*
+ */
+type FeaturedArticlesSliceVariation = FeaturedArticlesSliceDefault;
+
+/**
+ * FeaturedArticles Shared Slice
+ *
+ * - **API ID**: `featured_articles`
+ * - **Description**: FeaturedArticles
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedArticlesSlice = prismic.SharedSlice<
+  "featured_articles",
+  FeaturedArticlesSliceVariation
+>;
+
+/**
  * Primary content in *Hero → Default → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -972,6 +1045,61 @@ export interface TableSliceDefaultPrimaryItemsItem {
 }
 
 /**
+ * Item in *Table → 5 columns → Primary → items*
+ */
+export interface TableSlice5ColumnsPrimaryItemsItem {
+  /**
+   * col1 field in *Table → 5 columns → Primary → items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: table.5Columns.primary.items[].col1
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  col1: prismic.RichTextField;
+
+  /**
+   * col2 field in *Table → 5 columns → Primary → items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: table.5Columns.primary.items[].col2
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  col2: prismic.RichTextField;
+
+  /**
+   * col3 field in *Table → 5 columns → Primary → items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: table.5Columns.primary.items[].col3
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  col3: prismic.RichTextField;
+
+  /**
+   * col4 field in *Table → 5 columns → Primary → items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: table.5Columns.primary.items[].col4
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  col4: prismic.RichTextField;
+
+  /**
+   * col5 field in *Table → 5 columns → Primary → items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: table.5Columns.primary.items[].col5
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  col5: prismic.RichTextField;
+}
+
+/**
  * Primary content in *Table → Default → Primary*
  */
 export interface TableSliceDefaultPrimary {
@@ -1010,9 +1138,47 @@ export type TableSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Table → 5 columns → Primary*
+ */
+export interface TableSlice5ColumnsPrimary {
+  /**
+   * title field in *Table → 5 columns → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: table.5Columns.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * items field in *Table → 5 columns → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: table.5Columns.primary.items[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  items: prismic.GroupField<Simplify<TableSlice5ColumnsPrimaryItemsItem>>;
+}
+
+/**
+ * 5 columns variation for Table Slice
+ *
+ * - **API ID**: `5Columns`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TableSlice5Columns = prismic.SharedSliceVariation<
+  "5Columns",
+  Simplify<TableSlice5ColumnsPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *Table*
  */
-type TableSliceVariation = TableSliceDefault;
+type TableSliceVariation = TableSliceDefault | TableSlice5Columns;
 
 /**
  * Table Shared Slice
@@ -1074,6 +1240,11 @@ declare module "@prismicio/client" {
       CustomerLogosSliceDefaultPrimary,
       CustomerLogosSliceVariation,
       CustomerLogosSliceDefault,
+      FeaturedArticlesSlice,
+      FeaturedArticlesSliceDefaultPrimaryFeaturedArticlesItem,
+      FeaturedArticlesSliceDefaultPrimary,
+      FeaturedArticlesSliceVariation,
+      FeaturedArticlesSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceImageRightPrimary,
@@ -1092,8 +1263,11 @@ declare module "@prismicio/client" {
       TableSlice,
       TableSliceDefaultPrimaryItemsItem,
       TableSliceDefaultPrimary,
+      TableSlice5ColumnsPrimaryItemsItem,
+      TableSlice5ColumnsPrimary,
       TableSliceVariation,
       TableSliceDefault,
+      TableSlice5Columns,
     };
   }
 }
