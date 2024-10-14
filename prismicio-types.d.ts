@@ -233,11 +233,57 @@ export type NavigationDocument<Lang extends string = string> =
     Lang
   >;
 
+type SpotlightDocumentDataSlicesSlice = FeaturedArticlesSlice;
+
+/**
+ * Content for Spotlight documents
+ */
+interface SpotlightDocumentData {
+  /**
+   * article spotlight field in *Spotlight*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: spotlight.article_spotlight
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  article_spotlight: prismic.ContentRelationshipField<"article">;
+
+  /**
+   * Slice Zone field in *Spotlight*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: spotlight.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<SpotlightDocumentDataSlicesSlice>;
+}
+
+/**
+ * Spotlight document from Prismic
+ *
+ * - **API ID**: `spotlight`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SpotlightDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<SpotlightDocumentData>,
+    "spotlight",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | ArticleDocument
   | GalleryDocument
   | HomeDocument
-  | NavigationDocument;
+  | NavigationDocument
+  | SpotlightDocument;
 
 /**
  * Item in *AlternateGrid → Default → Primary → items*
@@ -1222,6 +1268,9 @@ declare module "@prismicio/client" {
       NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataSlicesSlice,
+      SpotlightDocument,
+      SpotlightDocumentData,
+      SpotlightDocumentDataSlicesSlice,
       AllDocumentTypes,
       AlternateGridSlice,
       AlternateGridSliceDefaultPrimaryItemsItem,

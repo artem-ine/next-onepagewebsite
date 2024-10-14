@@ -16,8 +16,8 @@ const FeaturedArticles = ({ slice }) => {
     >
     {slice.primary.featured_articles.map((item, index) => (
       <div key={index}>
-        <PrismicNextLink field={item.article1}>{item.article1.uid}</PrismicNextLink>
-        <PrismicNextLink field={item.article1}>Link</PrismicNextLink>
+        <PrismicNextLink field={item.article1}>{item.article1.slug}</PrismicNextLink>
+        <PrismicNextLink field={item.article1}>{item.article2.slug}</PrismicNextLink>
       </div>
     ))}
     </section>
